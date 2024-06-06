@@ -34,7 +34,7 @@ export default defineConfig({
       },
     }),
     WindiCSS(),
-    EnvironmentPlugin('all'),
+    //EnvironmentPlugin('all'),
     SetDynamicEnvVariables()
   ],
   build: {
