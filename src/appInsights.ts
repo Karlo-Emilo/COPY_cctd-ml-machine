@@ -8,7 +8,7 @@ import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import CookieManager from './script/CookieManager';
 
 const load = () => {
-  console.log("appinsights key", process.env.APPINSIGHTS_CONNECT);
+  console.log("appinsights keyen", process.env.APPINSIGHTS_CONNECT);
   // Do not load if the connection string is not set. E.g. in local development
   if (process.env.APPINSIGHTS_CONNECT === undefined || process.env.APPINSIGHTS_CONNECT === '') {
     return;
