@@ -9,6 +9,17 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import WindiCSS from 'vite-plugin-windicss';
 import { sveltePreprocess } from 'svelte-preprocess/dist/autoProcess';
 import EnvironmentPlugin from 'vite-plugin-environment';
+import * as fs from 'fs';
+
+function SetDynamicEnvVariables() {
+    return {
+        buildStart: () => {
+          console.log("env variable", process.env.APPINSIGHTS_CONNECT);
+          const envText = "APPINSIGHTS_CONNECT=" + process.env.APPINSIGHTS_CONNECT
+          fs.writeFileSync(".env", envText);
+        }
+    }
+}
 
 export default defineConfig({
   plugins: [
@@ -24,6 +35,7 @@ export default defineConfig({
     }),
     WindiCSS(),
     EnvironmentPlugin('all'),
+    SetDynamicEnvVariables()
   ],
   build: {
     target: 'esnext',
